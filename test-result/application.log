@@ -1,0 +1,5 @@
+25 七月 2014 17:12:04,023 INFO  ~ Starting D:\develop\webApp
+25 七月 2014 17:12:04,682 WARN  ~ You're running Play! in DEV mode
+25 七月 2014 17:12:04,769 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+25 七月 2014 17:12:15,450 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0
+25 七月 2014 17:12:15,504 INFO  ~ Application 'webApp' is now started !

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="/public/javascripts/browser-storage.js"></script>
+<script type="text/javascript" src="/public/javascripts/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" charset="utf-8" >
+/* var person  = new Object();
+person.key = "name";
+person.value = "lenzhao";
+BrowserStorage.api.set(person); */
+/* BrowserStorage.api.set([{key:"uname",value:"zhaoshiling1017"},{key:"pwd",value:"123456"}]); */
+/* BrowserStorage.api.clearAll(true);  */
+/* alert(BrowserStorage.api.get([{key:"uname"},{key:"pwd"}])[1].value); */
+/* window.localStorage.setItem("aaa","bcc");
+alert(window.localStorage.getItem("aaa"));  */
+ /*  window.WebSocket = window.WebSocket || window.MozWebSocket;
+  
+ if (!window.WebSocket){
+     alert("WebSocket not supported by this browser");
+     return;
+ };
+  
+var websocket = new WebSocket("ws://127.0.0.1:9000/helloSocket?name=lenzhao");
+ websocket.onmessage = function(evt){
+     var data = evt.data;
+      alert("received message: " + data);
+ }
+ */
+ function send() {
+ /* var name = document.querySelector("input[name=name]").value;
+    alert("websocket send message:"+name);
+    websocket.send(name); */
+ }
+</script>
+</head>
+<body>
+#{list map1,as:'m1'}
+	${m1.value.get('email')}
+#{/}
+<label for="name">What's your name:</label>
+<input type="text" id="name" value="${2+3}" name="name" />
+<button onclick="send()">Send</button>
+<div id="message" style="color:red"></div>
+</body>
+</html>
