@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 public class MyDsUtils {
 	private static DataSource dataSource;
+	//线程本地变量
     private static ThreadLocal<Connection> thread = new ThreadLocal<Connection>();
     static{
        dataSource =
@@ -30,7 +31,7 @@ public class MyDsUtils {
      * 获取线程局部的Connection
      */
     public static Connection getThreadConn(){
-       Connection con = thread.get();//先从线程中取数据
+       Connection con = thread.get();//先从线程局部中取数据
        if(con==null){
            con = getConn();
            thread.set(con);
