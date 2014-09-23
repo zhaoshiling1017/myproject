@@ -1,0 +1,12 @@
+.classpath
+.project
+.settings/
+d:/
+eclipse/
+tmp/
+dump.rdb
+conf/application.conf
+conf/log4j.properties
+conf/resources/services.yml
+modules/
+bin/
