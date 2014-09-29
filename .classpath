@@ -86,5 +86,6 @@
 	<classpathentry kind="lib" path="D:/play-1.2.4/modules/redis-0.3/lib/stringtemplate-3.2.1.jar"/>
 	<classpathentry kind="lib" path="D:/jar/mariadb-java-client-1.1.7.jar" sourcepath="D:/jar/mariadb-java-client-1.1.7/src"/>
 	<classpathentry kind="lib" path="D:/play-1.2.4/framework/lib/mysql-connector-java-5.1.13.jar"/>
+	<classpathentry kind="lib" path="lib/ganymed-ssh2-build210.jar"/>
 	<classpathentry kind="output" path="eclipse/classes"/>
 </classpath>
