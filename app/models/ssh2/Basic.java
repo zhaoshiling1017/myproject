@@ -42,7 +42,7 @@ public class Basic
 
 			Session sess = conn.openSession();
 
-			sess.execCommand("freeswitch -nc");
+			sess.execCommand("uname -a");
 
 			System.out.println("Here is some information about the remote host:");
 

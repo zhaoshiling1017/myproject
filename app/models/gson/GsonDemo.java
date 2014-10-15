@@ -1,14 +1,20 @@
 package models.gson;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 public class GsonDemo {
 	public static void main(String[] args) {
+		/*Calendar cal1 = Calendar.getInstance();
+		Calendar cal2 = Calendar.getInstance();
+		cal1.add(Calendar.MINUTE, -2);
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println(df.format(cal1.getTime()));
+		System.out.println(df.format(cal2.getTime()));
+		System.out.println(cal1.getTimeInMillis()-cal2.getTimeInMillis());
+		System.out.println(cal2.after(cal1));*/
+		
 		/*try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			String str  = "zhaoshiling";
@@ -18,7 +24,7 @@ public class GsonDemo {
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}*/
-		try {
+		/*try {
 			//统一资源标识符
 			URI uri = new URI("http://192.168.21.77:8080/swp/mainPage?aa=11&bb%3D22");
 			URL url2;
@@ -32,7 +38,7 @@ public class GsonDemo {
 			System.out.println(uri.getPort());
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	public static String convertToHexString(byte data[]) {
 		  StringBuffer strBuffer = new StringBuffer();

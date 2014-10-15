@@ -13,12 +13,12 @@ public class BasicWithHTTPProxy
 {
 	public static void main(String[] args)
 	{
-		String hostname = "my-ssh-server";
-		String username = "joe";
-		String password = "joespass";
+		String hostname = "121.199.170.176";
+		String username = "root";
+		String password = "bjiamcall2014DXT";
 
-		String proxyHost = "192.168.1.1";
-		int proxyPort = 3128; // default port used by squid
+		String proxyHost = "121.199.170.176";
+		int proxyPort = 30001; // default port used by squid
 		
 		try
 		{
