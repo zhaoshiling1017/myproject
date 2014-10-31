@@ -82,6 +82,8 @@ public class XmlXStream {
         // 1. object类型转换为xml类型，在控制台打印  
         String xml = switchXML.printXML(user);  
         System.out.println("---------------------");  
+        xml = "<?xml version=\"1.0\" encoding=\"GBK\" standalone=\"yes\"?>\r\n"+xml;
+        System.out.println(xml);
         // 2. xml类型转换为object类型，在控制台打印  
         switchXML.printObj(xml);  
         System.out.println("---------------------");  

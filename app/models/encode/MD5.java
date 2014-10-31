@@ -5,6 +5,8 @@ Last Modified:10,Mar,2001
 *************************************************/
 package models.encode;
 import java.lang.reflect.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 /*************************************************
 md5 类实现了RSA Data Security, Inc.在提交给IETF
 的RFC1321中的MD5 message-digest 算法。
@@ -361,12 +363,20 @@ public class MD5 {
 
         public static void main(String args[]) {
 
-
+        	/*try {
+    			MessageDigest md = MessageDigest.getInstance("MD5");
+    			String str  = "zhaoshiling";
+    			md.update(str.getBytes());
+    			byte[] b = md.digest();
+    			System.out.println(convertToHexString(b));
+    		} catch (NoSuchAlgorithmException e) {
+    			e.printStackTrace();
+    		}*/
                 MD5 m = new MD5();
                 if (Array.getLength(args) == 0) {   //如果没有参数，执行标准的Test Suite
                 
                        	System.out.println("MD5 Test suite:");
-                	System.out.println("MD5(\"\"):"+m.getMD5ofStr(""));
+                	System.out.println("MD5(\"zhaoshiling\"):"+m.getMD5ofStr("zhaoshiling"));
                 	System.out.println("MD5(\"a\"):"+m.getMD5ofStr("a"));
                 	System.out.println("MD5(\"abc\"):"+m.getMD5ofStr("abc"));
                 	System.out.println("MD5(\"message digest\"):"+m.getMD5ofStr("message digest"));
@@ -377,9 +387,14 @@ public class MD5 {
                 }
                 else 
                       	System.out.println("MD5(" + args[0] + ")=" + m.getMD5ofStr(args[0]));
-                
-         
         }
-
+        public static String convertToHexString(byte data[]) {
+  		  StringBuffer strBuffer = new StringBuffer();
+  		  for (int i = 0; i < data.length; i++) {
+  			  //位与
+  			  strBuffer.append(Integer.toHexString(0xff & data[i]));
+  		  }
+  		  return strBuffer.toString();
+  	}
 }
 
