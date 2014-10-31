@@ -362,39 +362,18 @@ public class MD5 {
         }
 
         public static void main(String args[]) {
-
-        	/*try {
-    			MessageDigest md = MessageDigest.getInstance("MD5");
-    			String str  = "zhaoshiling";
-    			md.update(str.getBytes());
-    			byte[] b = md.digest();
-    			System.out.println(convertToHexString(b));
-    		} catch (NoSuchAlgorithmException e) {
-    			e.printStackTrace();
-    		}*/
-                MD5 m = new MD5();
-                if (Array.getLength(args) == 0) {   //如果没有参数，执行标准的Test Suite
-                
-                       	System.out.println("MD5 Test suite:");
-                	System.out.println("MD5(\"zhaoshiling\"):"+m.getMD5ofStr("zhaoshiling"));
-                	System.out.println("MD5(\"a\"):"+m.getMD5ofStr("a"));
-                	System.out.println("MD5(\"abc\"):"+m.getMD5ofStr("abc"));
-                	System.out.println("MD5(\"message digest\"):"+m.getMD5ofStr("message digest"));
-                	System.out.println("MD5(\"abcdefghijklmnopqrstuvwxyz\"):"+
-                        m.getMD5ofStr("abcdefghijklmnopqrstuvwxyz"));
-                	System.out.println("MD5(\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\"):"+
-                     	m.getMD5ofStr("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"));
-                }
-                else 
-                      	System.out.println("MD5(" + args[0] + ")=" + m.getMD5ofStr(args[0]));
+        	MD5 m = new MD5();
+            if (Array.getLength(args) == 0) {   //如果没有参数，执行标准的Test Suite
+                System.out.println("MD5 Test suite:");
+            	System.out.println("MD5(\"zhaoshiling\"):"+m.getMD5ofStr("zhaoshiling"));
+            	System.out.println("MD5(\"abc\"):"+m.getMD5ofStr("abc"));
+            	System.out.println("MD5(\"message digest\"):"+m.getMD5ofStr("message digest"));
+            	System.out.println("MD5(\"abcdefghijklmnopqrstuvwxyz\"):"+
+                    m.getMD5ofStr("abcdefghijklmnopqrstuvwxyz"));
+            	System.out.println("MD5(\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\"):"+
+                 	m.getMD5ofStr("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"));
+            }else 
+                System.out.println("MD5(" + args[0] + ")=" + m.getMD5ofStr(args[0]));    
         }
-        public static String convertToHexString(byte data[]) {
-  		  StringBuffer strBuffer = new StringBuffer();
-  		  for (int i = 0; i < data.length; i++) {
-  			  //位与
-  			  strBuffer.append(Integer.toHexString(0xff & data[i]));
-  		  }
-  		  return strBuffer.toString();
-  	}
 }
 
