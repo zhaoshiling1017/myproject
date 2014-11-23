@@ -28,10 +28,10 @@ public class Application extends Controller {
 		    		System.out.println("id:"+rs.getLong("id")+",name:"+rs.getString("name")+",email:"+rs.getString("email"));
 		    		break;
 		    	}
+		    	//hehe
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
-			System.out.println("hello world");
 		}
     	
     }
