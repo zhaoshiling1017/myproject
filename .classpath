@@ -88,5 +88,29 @@
 	<classpathentry kind="lib" path="lib/ganymed-ssh2-build210.jar" sourcepath="C:/Users/lenzhao/.m2/repository/ch/ethz/ganymed/ganymed-ssh2/build210/ganymed-ssh2-build210-sources.jar"/>
 	<classpathentry kind="lib" path="lib/xstream-1.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/xpp3_min-1.1.4c.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/akka-core_2.8.0.RC3-0.9.1.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/aspectwerkz-jdk5-2.1.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/aspectwerkz-nodeps-jdk5-2.1.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/configgy-2.8.0.RC3-1.5.2-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/dispatch-futures_2.8.0.RC3-0.7.4.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/dispatch-http_2.8.0.RC3-0.7.4.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/dispatch-json_2.8.0.RC3-0.7.4.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/geronimo-jta_1.1_spec-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/guice-all-2.0.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/h2-lzf-1.0.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/jackson-core-asl-1.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/jackson-mapper-asl-1.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/jgroups-2.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/jsr166x-1.0.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/multiverse-alpha-0.5.2.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/multiverse-alpha-unborn-0.5.2.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/multiverse-core-0.5.2.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/multiverse-instrumentation-0.5.2.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/netty-3.2.0.CR1.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/play-akka.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/protobuf-java-2.3.0.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/sbinary-2.8.0.RC3-0.3.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="D:/play-1.2.4/modules/akka-head/lib/sjson-0.6-SNAPSHOT-2.8.RC3.jar"/>
 	<classpathentry kind="output" path="eclipse/classes"/>
 </classpath>
