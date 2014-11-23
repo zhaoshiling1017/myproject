@@ -31,7 +31,7 @@ public class Application extends Controller {
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
-			
+			System.out.println("hello world");
 		}
     	
     }
