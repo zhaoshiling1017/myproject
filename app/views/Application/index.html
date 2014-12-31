@@ -1,19 +1,189 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="/public/javascripts/browser-storage.js"></script>
 <script type="text/javascript" src="/public/javascripts/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="/public/javascripts/browser-storage.js"></script>
 <script type="text/javascript" charset="utf-8" >
-/* var person  = new Object();
-person.key = "name";
+var person  = new Object();
+//打开数据库
+function openDB (name,version) {
+    var version=version || 1;
+    var request=window.indexedDB.open(name,version);
+    request.onerror=function(e){
+        console.log(e.currentTarget.error.message);
+    };
+    request.onsuccess=function(e){
+        myDB.db=e.target.result;
+        
+    };
+  	//我们可以在创建object store的时候指明索引，使用object store的createIndex创建索引，方法有三个参数
+	//索引名称
+	//索引属性字段名
+	// 索引属性值是否唯一   	
+    request.onupgradeneeded=function(e){
+        var db=e.target.result;
+        if(!db.objectStoreNames.contains('students')){
+        	//keypath
+            var store = db.createObjectStore('students',{keyPath:"id"});
+            store.createIndex('nameIndex','name',{unique:true}); 
+            store.createIndex('ageIndex','age',{unique:false}); 
+        	//keygenerate
+            //db.createObjectStore('students',{autoIncrement: true});
+        	//调用数据库实例的deleteObjectStore方法可以删除一个object store
+            //db.deleteObjectStore('students'); 
+        }
+        console.log('DB version changed to '+version);
+    };
+}
+//关闭数据库
+function closeDB(db){
+    db.close();
+}
+//删除数据库
+function deleteDB(name){
+    indexedDB.deleteDatabase(name);
+}
+
+var myDB={
+    name:'test',
+    version:1,
+    db:null
+};
+
+var students=[{ 
+    id:1001, 
+    name:"Byron", 
+    age:24 
+},{ 
+    id:1002, 
+    name:"Frank", 
+    age:30 
+},{ 
+    id:1003, 
+    name:"Aaron", 
+    age:26 
+}];
+//添加数据
+function addData(db,storeName){
+	//事务具有三种模式 1. 只读：read，不能修改数据库数据，可以并发执行2. 读写：readwrite，可以进行读写操作3. 版本变更：verionchange
+    var transaction=db.transaction(storeName,'readwrite'); 
+    var store=transaction.objectStore(storeName); 
+
+    for(var i=0;i<students.length;i++){
+        store.add(students[i]);
+    }
+}
+//查找数据
+function getDataByKey(db,storeName,key){
+    var transaction=db.transaction(storeName,'readwrite'); //打开一个事务，使用storeName object store
+    var store=transaction.objectStore(storeName); //获取storeName object store
+    var request=store.get(key); 
+    request.onsuccess=function(e){ 
+        var student=e.target.result; 
+        console.log(student.name); 
+    };
+}
+//更新数据
+function updateDataByKey(db,storeName,key,age){
+    var transaction=db.transaction(storeName,'readwrite'); 
+    var store=transaction.objectStore(storeName); 
+    var request=store.get(key); 
+    request.onsuccess=function(e){ 
+        var student=e.target.result; 
+        student.age=age;
+        store.put(student); 
+    };
+}
+//调用object store的delete方法根据键值删除记录
+function deleteDataByKey(db,storeName,key){
+    var transaction=db.transaction(storeName,'readwrite'); 
+    var store=transaction.objectStore(storeName); 
+    store.delete(key); 
+}
+//调用object store的clear方法可以清空object store
+function clearObjectStore(db,storeName){
+    var transaction=db.transaction(storeName,'readwrite'); 
+    var store=transaction.objectStore(storeName); 
+    store.clear();
+}
+function deleteObjectStore(db,storeName){
+	var transaction=db.transaction(storeName,'versionchange'); 
+	db.deleteObjectStore(storeName);
+}
+//利用索引获取数据
+function getDataByIndex(db,storeName){
+	var transaction=db.transaction(storeName);
+    var store=transaction.objectStore(storeName);
+    var index = store.index("nameIndex");
+    index.get('Byron').onsuccess=function(e){
+        var student=e.target.result;
+        console.log(student.id);
+    }
+}
+//使用object store的openCursor()方法打开游标
+function fetchStoreByCursor(db,storeName){
+    var transaction=db.transaction(storeName);
+    var store=transaction.objectStore(storeName);
+    var request=store.openCursor();
+    request.onsuccess=function(e){
+        var cursor=e.target.result;
+        if(cursor){
+            console.log(cursor.key);
+            var currentStudent=cursor.value;
+            console.log(currentStudent.name);
+            cursor.continue();
+        }
+    };
+}
+//利用索引获取数据  不重复
+function getDataByIndex(db,storeName){
+    var transaction=db.transaction(storeName);
+    var store=transaction.objectStore(storeName);
+    var index = store.index("nameIndex");
+    index.get('Byron').onsuccess=function(e){
+        var student=e.target.result;
+        console.log(student.id);
+    }
+}
+//利用索引获取数据  重复
+function getMultipleData(db,storeName){
+    var transaction=db.transaction(storeName);
+    var store=transaction.objectStore(storeName);
+    var index = store.index("ageIndex");
+    var request=index.openCursor(IDBKeyRange.only(26))
+    request.onsuccess=function(e){
+        var cursor=e.target.result;
+        if(cursor){
+            var student=cursor.value;
+            console.log(student.id);
+            cursor.continue();
+        }
+    }
+}
+openDB(myDB.name,myDB.version);
+
+setTimeout(function(){
+    //addData(myDB.db,'students');
+	//getDataByKey(myDB.db,'students',1002);
+	//fetchStoreByCursor(myDB.db,'students');
+	//deleteDB(myDB.name);
+},1000);
+
+/* setTimeout(function(){
+    closeDB(myDB.db);
+    deleteDB(myDB.name);
+},500); */
+
+
+/* person.key = "name";
 person.value = "lenzhao";
-BrowserStorage.api.set(person); */
-/* BrowserStorage.api.set([{key:"uname",value:"zhaoshiling1017"},{key:"pwd",value:"123456"}]); */
-/* BrowserStorage.api.clearAll(true);  */
-/* alert(BrowserStorage.api.get([{key:"uname"},{key:"pwd"}])[1].value); */
-/* window.localStorage.setItem("aaa","bcc");
-alert(window.localStorage.getItem("aaa"));  */
- /*  window.WebSocket = window.WebSocket || window.MozWebSocket;
+BrowserStorage.api.set(person); 
+BrowserStorage.api.set([{key:"uname",value:"zhaoshiling1017"},{key:"pwd",value:"123456"}]); */
+//BrowserStorage.api.clearAll(true);
+//alert(BrowserStorage.api.get([{key:"uname"},{key:"pwd"}])[0].value);
+//window.localStorage.setItem("aaa","bcc");
+//alert(window.localStorage.getItem("aaa"));
+/* window.WebSocket = window.WebSocket || window.MozWebSocket;
   
  if (!window.WebSocket){
      alert("WebSocket not supported by this browser");
@@ -24,8 +194,7 @@ var websocket = new WebSocket("ws://127.0.0.1:9000/helloSocket?name=lenzhao");
  websocket.onmessage = function(evt){
      var data = evt.data;
       alert("received message: " + data);
- }
- */
+ } */
  function send() {
  /* var name = document.querySelector("input[name=name]").value;
     alert("websocket send message:"+name);
@@ -34,11 +203,8 @@ var websocket = new WebSocket("ws://127.0.0.1:9000/helloSocket?name=lenzhao");
 </script>
 </head>
 <body>
-#{list map1,as:'m1'}
-	${m1.value.get('email')}
-#{/}
 <label for="name">What's your name:</label>
-<input type="text" id="name" value="${2+3}" name="name" />
+<input type="text" id="name"  name="name" />
 <button onclick="send()">Send</button>
 <div id="message" style="color:red"></div>
 </body>

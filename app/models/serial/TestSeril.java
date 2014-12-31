@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import models.Persion;
+import models.Person;
 
 public class TestSeril {
 	/**
@@ -33,11 +33,11 @@ public class TestSeril {
 	 * @return
 	 * @throws Exception
 	 */
-	 public static Persion readObject(File f) throws Exception{
+	 public static Person readObject(File f) throws Exception{
 	       InputStream is=new FileInputStream(f);
 	       //ObjectOutputStream 核心类
 	       ObjectInputStream ois=new ObjectInputStream(is);
-	       return (Persion)ois.readObject();
+	       return (Person)ois.readObject();
 
 	 }
 	 public static void main(String[] args) {
@@ -52,7 +52,7 @@ public class TestSeril {
 			e.printStackTrace();
 		}*/
 		 try {
-			Persion p = readObject(new File("d:/dev/file.txt"));
+			 Person p = readObject(new File("d:/dev/file.txt"));
 			System.out.println(p.getAddress()+"-----"+p.getAge()+"------"+p.getEmail()+"-------"+p.getName());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
