@@ -15,7 +15,7 @@ public class Basic
 	{
 		String hostname = "121.199.170.176";
 		String username = "root";
-		String password = "bjiamcall2014DXT";
+		String password = "";
 
 		try
 		{

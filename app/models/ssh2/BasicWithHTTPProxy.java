@@ -15,7 +15,7 @@ public class BasicWithHTTPProxy
 	{
 		String hostname = "121.199.170.176";
 		String username = "root";
-		String password = "bjiamcall2014DXT";
+		String password = "";
 
 		String proxyHost = "121.199.170.176";
 		int proxyPort = 30001; // default port used by squid
