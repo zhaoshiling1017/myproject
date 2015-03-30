@@ -4,7 +4,7 @@
 <script type="text/javascript" src="/public/javascripts/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="/public/javascripts/browser-storage.js"></script>
 <script type="text/javascript" charset="utf-8" >
-var person  = new Object();
+/* var person  = new Object();
 //打开数据库
 function openDB (name,version) {
     var version=version || 1;
@@ -167,7 +167,7 @@ setTimeout(function(){
 	//getDataByKey(myDB.db,'students',1002);
 	//fetchStoreByCursor(myDB.db,'students');
 	//deleteDB(myDB.name);
-},1000);
+},1000); */
 
 /* setTimeout(function(){
     closeDB(myDB.db);
@@ -183,22 +183,30 @@ BrowserStorage.api.set([{key:"uname",value:"zhaoshiling1017"},{key:"pwd",value:"
 //alert(BrowserStorage.api.get([{key:"uname"},{key:"pwd"}])[0].value);
 //window.localStorage.setItem("aaa","bcc");
 //alert(window.localStorage.getItem("aaa"));
-/* window.WebSocket = window.WebSocket || window.MozWebSocket;
-  
- if (!window.WebSocket){
-     alert("WebSocket not supported by this browser");
-     return;
- };
-  
-var websocket = new WebSocket("ws://127.0.0.1:9000/helloSocket?name=lenzhao");
- websocket.onmessage = function(evt){
-     var data = evt.data;
-      alert("received message: " + data);
- } */
- function send() {
- /* var name = document.querySelector("input[name=name]").value;
-    alert("websocket send message:"+name);
-    websocket.send(name); */
+/*  var  wsServer = 'ws://127.0.0.1:8888/helloSocket?name=lenzhao';  */
+ var  wsServer = '@@{MyWebSocket.echo()}'; 
+ var  websocket = new WebSocket(wsServer); 
+ websocket.onopen = function (evt) { onOpen(evt) };
+ websocket.onclose = function (evt) { onClose(evt) }; 
+ websocket.onmessage = function (evt) { onMessage(evt) }; 
+ websocket.onerror = function (evt) { onError(evt) }; 
+ function onOpen(evt) { 
+ console.log("Connected to WebSocket server."); 
+ } 
+ function onClose(evt) { 
+ console.log("Disconnected"); 
+ } 
+ function onMessage(evt) { 
+ console.log('Retrieved data from server: ' + evt.data); 
+ } 
+ function onError(evt) { 
+ console.log('Error occured: ' + evt.data); 
+ }
+ function send(){
+	 var name = $("#name").val();
+	 if(name != ''){
+		 websocket.send(name);
+	 }
  }
 </script>
 </head>

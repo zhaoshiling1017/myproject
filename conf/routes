@@ -5,6 +5,7 @@
 # Home page
 GET     /                                       Application.index
 WS   	/helloSocket            				MyWebSocket.hello
+WS   	/echo            				MyWebSocket.echo
 GET   /captcha                            Application.captcha
 GET   /person/{id}/show                            Application.show
 # Ignore favicon requests

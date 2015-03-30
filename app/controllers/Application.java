@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.jgroups.util.UUID;
 
 import models.Person;
 import models.utils.MyDsUtils;

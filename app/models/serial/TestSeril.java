@@ -16,7 +16,7 @@ public class TestSeril {
 	 * @throws Exception
 	 */
 	public static void writeObject(Object o) throws Exception{
-		File f=new File("d:/dev/file.txt");
+		File f=new File("/home/lenzhao/data/file.txt");
 	       if(f.exists()){
 	           f.delete();
 	       }
@@ -41,7 +41,7 @@ public class TestSeril {
 
 	 }
 	 public static void main(String[] args) {
-		/*Persion p = new Persion();
+		/*Person p = new Person();
 		p.setAddress("北京海淀中关村");
 		p.setAge(26);
 		p.setEmail("zhaosl1017@gmail.com");
@@ -52,7 +52,7 @@ public class TestSeril {
 			e.printStackTrace();
 		}*/
 		 try {
-			 Person p = readObject(new File("d:/dev/file.txt"));
+			 Person p = readObject(new File("/home/lenzhao/data/file.txt"));
 			System.out.println(p.getAddress()+"-----"+p.getAge()+"------"+p.getEmail()+"-------"+p.getName());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
